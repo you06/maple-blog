@@ -1,0 +1,19 @@
+{
+  "name"        : "maple-blog",
+  "version"     : "0.1.8",
+  "homepage"    : "https://blog.tongmu.me/",
+  "description" : "A personal blog that uses koa",
+  "repository"  : "git@github.com:you06/maple-blog.git",
+  "author"      : "Tong <you1474600@gmail.com>",
+  "dependencies": {
+    "koa"               : "2.5.4",
+    "koa-route"         : "0.0.x",
+    "xtemplate"         : "4.5.x",
+    "xtpl"              : "3.2.x"
+  },
+  "main"    : "./app.js",
+  "engines" : { 
+    "node": "4.4.x" ,
+    "npm" : "2.15.x"
+  }
+}
