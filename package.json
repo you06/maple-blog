@@ -15,9 +15,12 @@
   },
   "homepage": "https://blog.tongmu.me/",
   "dependencies": {
-    "koa"               : "1.2.x",
-    "koa-route"         : "2.4.x",
-    "xtemplate"         : "4.5.x",
-    "xtpl"              : "3.2.x"
+    "koa"               : "^1.2.0",
+    "koa-router"        : "^5.4.0",
+    "koa-compress"      : "^1.0.9",
+    "koa-static"        : "^2.0.0",
+    "xtemplate"         : "^4.5.0",
+    "xtpl"              : "^3.2.0",
+    "path"              : "^0.12.7"
   }
 }

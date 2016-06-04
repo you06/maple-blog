@@ -1,0 +1,10 @@
+{
+    "path": {
+        "static": "./Public",
+        "viewDir": "./view"
+    },
+    "app": {
+        "name": "MapleBlog",
+        "port": 3000
+    }
+}
