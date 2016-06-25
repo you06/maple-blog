@@ -12,7 +12,7 @@ const root = path.dirname(__dirname);
 
 module.exports.path = {};
 module.exports.path.static = path.join(root, "public");
-module.exports.path.views = path.join(root, "views");
+module.exports.path.views = path.join(root, "view");
 
 // jwt settings
 // module.exports.jwt = configs.jwt;

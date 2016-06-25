@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" href="{{PUBLIC}}/css/style.css">
 </head>
 <body>
   <h2>{{title}}</h2>
-  <p>this is working</p>
+  <p>this is template</p>
 </body>
 </html>
