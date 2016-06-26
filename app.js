@@ -11,7 +11,8 @@ app.use(compress());
 // static files
 const serve = require("koa-static");
 const staticFilePath = configs.path.static;
-app.use(serve({rootDir: 'public', rootPath: staticFilePath}));
+// app.use(serve({rootDir: 'public', rootPath: staticFilePath}));
+app.use(serve(staticFilePath));
 console.log('static file folder:', staticFilePath);
 
 // routes
