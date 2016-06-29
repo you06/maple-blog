@@ -16,6 +16,7 @@ const Admin = require("../controllers/Admin");
 router.get('/', Application.index);
 
 router.get('/index', Index.index);
+router.get('/index/article', Index.article);
 
 router.get('/tag', Tag.index);
 router.get('/tags', Tag.index);
