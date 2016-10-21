@@ -1,92 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Opposite World</title>
-    <meta http-equiv="Pragma" content="no-cache" /> 
-    <meta http-equiv="Cache-Control" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <link rel="stylesheet" type="text/css" href="/css/common.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <title>Maple</title>
+  <!-- favicon -->
+  <link rel="icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="bookmark" href="/favicon.ico" type="image/x-icon">
+  <!-- css --> 
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
 </head>
 <body>
-    <section class="header full-width vertical-middle">
-        <!-- header -->
-        <div class="col-md-6 container" id="logo-line">
-            <img src="/image/logo-white.png" class="fl">
-            <p class="title col-md-6">
-                <span class="home">Opposite World</span>
-                <br>
-                <span class="motto">In solitude,where we are least alone.</span>
-            </p>
-        </div>
+
+  <header class="maple-header" id="maple-header">
+    <section class="words">
+      <section class="bloc col-12 word-center">
+        <h1>Mirrors</h1>
+        <h2>In solitude, where we are at least alone.</h2>
+      </section>
     </section>
-    <section class="body full-width">
-        <!-- body -->
-        <section class="fl colorbar">
-            <!-- colorbar -->
+  </header>
+
+  <header class="maple-header-small hidden" id="maple-header-small">
+    <div class="maple-header-small-container">
+      <img src="/image/avatar.png" data-rjs="3" class="maple-header-small-logo">
+    </div>
+  </header>
+
+  <section class="maple-body-wrapper">
+    <section class="maple-body">
+      <section class="bloc col-2"></section>
+      <section class="bloc col-8" id="body-wrapper">
+
+      </section>
+      <div id="loading-wrapper"></div>
+      <section class="cb"></section>
+<!--       <section class="bloc col-3">
+        <section class="bloc col-2"></section>
+        <section class="maple-intro bloc col-8 maple-font">
+          总是怀抱纯白暗阎，被囚禁于这牢笼之中，仍痴望能触碰到你。地狱尽头熊熊烈焰，将扭曲的爱意之锁相连。昨日已无处寻觅，纵然梦魇不断灼烧我心，仍然想得到那真正的答案。在这断绝常世的地底乐园，将你真正的解放。爱啊，化作毒蛇之身吧，舍下甘美的陷阱，将你引诱。这个由温柔的谎言奏响的毒牙之梦，就这样沉溺于其中，睡吧......
         </section>
-        <section class="col-md-12 content">
-            <!-- content -->
-            {{#each(articles)}}
-                <div class="item-container col-md-12">
-                    <div class="item-timeline col-md-3">
-                        <div class="b-number-array item-date" date="{{year + "-"~}} {{#if(month < 10)}}0{{/if}} {{~month}}">
-                            {{! what's this strange expression ???}}
-                        </div>
-                    </div>
-                    <div class="item-view col-md-9">
-                        <div class="item-headimg fl">
-                            <img src="/Upload/image/headimg/1.png" alt="">
-                        </div>
-                        <div class="item-box fl">
-                            <div class="item-box-main fr">
-                                <p class="item-title"><a href="#">{{title}}</a></p>
-                                <p class="item-info">
-                                    <span class="item-info-child">
-                                        {{!echo date info}}
-                                        <span>{{year}}</span>年
-                                        <span>{{month}}</span>月
-                                        <span>{{day}}</span>日
-                                    </span>
-                                    <span class="item-info-child">
-                                        {{#each(tags)}}
-                                        <span class="item-info-tag">
-                                            <i class="fa fa-tag"></i> <a href="">{{this}}</a>
-                                        </span>
-                                        {{/each}}
-                                    </span>
-                                </p>
-                                <p class="item-preview">
-                                    {{abstract}}
-                                </p>
-                            </div>
-                            <svg width="30" height="45" class="fr" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                                <rect width="30" height="45" style="fill: #fff;"/>
-                                <line x1="30" y1="0" x2="0" y2="0"style="stroke: #ccc; stroke-width: 4;"/>
-                                <line x1="0" y1="0" x2="30" y2="45"style="stroke: #ccc; stroke-width: 2;"/>
-                            </svg>
-                            <div class="cb"></div>
-                        </div>
-                        <div class="cb"></div>
-                    </div>
-                </div>
-            {{/each}}
-        </section>
-        <div class="cb"></div>
+        <section class="bloc col-2"></section>
+      </section> -->
     </section>
-    <section class="footer full-width">
-        <!-- footer -->
-        <img src="/image/logo-white.png" alt="Matt">
-        <p>All-For-Science · Contact with me <a href="https://www.tongmu.me/" target="_blank">Matt</a></p>
-        <p>
-            <a href="https://github.com/you06/maple-blog" target="_blank">GitHub Project</a>&nbsp;&nbsp;
-            <a href="http://weibo.com/3805189017" target="_blank">Sina Weibo</a>&nbsp;&nbsp;
-            <a href="mailto:tongmu@tiaozhan.com" target="_blank">Email</a>
-        </p>
-    </section>
-    <script type="text/javascript" src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/index.js"></script>
+  </section>
+
+  <footer class="maple-footer" id="maple-footer">
+
+  </footer>
+
+  <script type="text/javascript" src="/js/retina.min.js"></script>
+  <script type="text/javascript" src="/js/router.js"></script>
+  <script type="text/javascript" src="/js/router.main.js"></script>
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>

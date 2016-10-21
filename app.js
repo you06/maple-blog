@@ -18,22 +18,15 @@ console.log('static file folder:', staticFilePath);
 // routes
 app.use(require("./route/routes"));
 
-// const xtpl = require('xtpl/lib/koa');
-// app = require('xtpl/lib/koa')(require('koa')(),{
-//     views:'./view'
-// });
-
-// app.use(route.get('/:name', function*(name) {
-//     yield this.render('index', {title: name});
-// }));
-
-// app.use(route.get('/', function*(name) {
-//     yield this.render('index', {title: 'index'});
-// }));
+const websockify = require('koa-websocket');
+const wsapp = websockify(app);
+wsapp.ws.use(require('./route/ws.route.js').route);
+wsapp.listen(configs.websocket.port);
+console.log('websocket run at port', configs.websocket.port);
 
 // 所有没有命中的路由
 app.use(function *() {
-    this.throw("404 not found, root path only now.", 404);
+    this.throw("", 404);
 });
 
 app.listen(configs.app.port);

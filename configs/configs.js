@@ -20,3 +20,4 @@ module.exports.path.views = path.join(root, "view");
 
 // port
 module.exports.app = configs.app;
+module.exports.websocket = configs.websocket;

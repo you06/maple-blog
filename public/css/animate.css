@@ -1,0 +1,213 @@
+.open-small-header {
+  opacity: 1;
+  display: block;
+  animation: openSmallHeader .5s;
+  -moz-animation: openSmallHeader .5s;
+  -webkit-animation: openSmallHeader .5s;
+  -o-animation: openSmallHeader .5s;
+}
+
+@keyframes openSmallHeader { 
+  from { opacity: 0; display: none; }
+  to { opacity: 1; display: block; } 
+}
+@-moz-keyframes openSmallHeader { 
+  from { opacity: 0; display: none; }
+  to { opacity: 1; display: block; } 
+}
+@-webkit-keyframes openSmallHeader {
+  from { opacity: 0; display: none; }
+  to { opacity: 1; display: block; } 
+}
+@-o-keyframes openSmallHeader {
+  from { opacity: 0; display: none; }
+  to { opacity: 1; display: block; } 
+}
+
+.open-small-header * {
+  opacity: 1;
+  animation: smallHeaderFadeIn .5s;
+  -moz-animation: smallHeaderFadeIn .5s;
+  -webkit-animation: smallHeaderFadeIn .5s;
+  -o-animation: smallHeaderFadeIn .5s;
+}
+
+@keyframes smallHeaderFadeIn { 
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-moz-keyframes smallHeaderFadeIn { 
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-webkit-keyframes smallHeaderFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-o-keyframes smallHeaderFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+
+
+.close-small-header {
+  opacity: 0;
+  animation: closeSmallHeader .5s;
+  -moz-animation: closeSmallHeader .5s;
+  -webkit-animation: closeSmallHeader .5s;
+  -o-animation: closeSmallHeader .5s;
+}
+
+@keyframes closeSmallHeader { 
+  from { opacity: 1; display: block; }
+  99% { display: block; }
+  to { opacity: 0; display: none; } 
+}
+@-moz-keyframes closeSmallHeader { 
+  from { opacity: 1; display: block; }
+  99% { display: block; }
+  to { opacity: 0; display: none; } 
+}
+@-webkit-keyframes closeSmallHeader {
+  from { opacity: 1; display: block; }
+  99% { display: block; }
+  to { opacity: 0; display: none; } 
+}
+@-o-keyframes closeSmallHeader {
+  from { opacity: 1; display: block; }
+  99% { display: block; }
+  to { opacity: 0; display: none; } 
+}
+
+.open-small-header * {
+  opacity: 1;
+  animation: smallHeaderFadeOut .5s;
+  -moz-animation: smallHeaderFadeOut .5s;
+  -webkit-animation: smallHeaderFadeOut .5s;
+  -o-animation: smallHeaderFadeOut .5s;
+}
+
+@keyframes smallHeaderFadeOut { 
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-moz-keyframes smallHeaderFadeOut { 
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-webkit-keyframes smallHeaderFadeOut {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-o-keyframes smallHeaderFadeOut {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+
+
+.open-full-header {
+  opacity: 1;
+  display: block;
+  animation: openFullHeader .5s;
+  -moz-animation: openFullHeader .5s;
+  -webkit-animation: openFullHeader .5s;
+  -o-animation: openFullHeader .5s;
+}
+
+@keyframes openFullHeader { 
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-moz-keyframes openFullHeader { 
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-webkit-keyframes openFullHeader {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-o-keyframes openFullHeader {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+
+.open-full-header * {
+  opacity: 1;
+  animation: fullHeaderFadeIn .5s;
+  -moz-animation: fullHeaderFadeIn .5s;
+  -webkit-animation: fullHeaderFadeIn .5s;
+  -o-animation: fullHeaderFadeIn .5s;
+}
+
+@keyframes fullHeaderFadeIn { 
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-moz-keyframes fullHeaderFadeIn { 
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-webkit-keyframes fullHeaderFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-o-keyframes fullHeaderFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+
+
+.close-full-header {
+  opacity: 0;
+  animation: closeFullHeader .5s;
+  -moz-animation: closeFullHeader .5s;
+  -webkit-animation: closeFullHeader .5s;
+  -o-animation: closeFullHeader .5s;
+}
+
+@keyframes closeFullHeader { 
+  from { opacity: 1; }
+  to { opacity: 0; } 
+}
+@-moz-keyframes closeFullHeader { 
+  from { opacity: 1; }
+  to { opacity: 0; } 
+}
+@-webkit-keyframes closeFullHeader {
+  from { opacity: 1; }
+  to { opacity: 0; } 
+}
+@-o-keyframes closeFullHeader {
+  from { opacity: 1; }
+  to { opacity: 0; } 
+}
+
+.close-full-header * {
+  opacity: 1;
+  animation: fullHeaderFadeOut .5s;
+  -moz-animation: fullHeaderFadeOut .5s;
+  -webkit-animation: fullHeaderFadeOut .5s;
+  -o-animation: fullHeaderFadeOut .5s;
+}
+
+@keyframes fullHeaderFadeOut { 
+  from { opacity: 1; }
+  to { opacity: 0; } 
+}
+@-moz-keyframes fullHeaderFadeOut { 
+  from { opacity: 0; }
+}
+@-webkit-keyframes fullHeaderFadeOut {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+@-o-keyframes fullHeaderFadeOut {
+  from { opacity: 0; }
+  to { opacity: 1; } 
+}
+
+
+
+
+
+
