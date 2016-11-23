@@ -11,9 +11,6 @@ const Index = require("../controllers/Index");
 
 // index
 router.get('/', Application.index);
-
-router.get('/index', Index.index);
-
-// router.get('/ws', Websocket.index);
+router.get('/*', Index.index);
 
 module.exports = router.routes();

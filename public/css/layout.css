@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, dd, .maple-font {
 .col-12 {width: 100%; float: left; max-width: 1440px;}
 .bloc { min-height: 1px; padding: 15px; }
 .cb { clear: both; }
-.hidden { display: none; }
+.hidden { visibility: hidden; }
 
 .word-center * {
   text-align: center;
@@ -36,6 +36,9 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, dd, .maple-font {
 .maple-header-small { position: fixed; top: 0; height: 70px; width: 100%; background-color: #fff; border-bottom: 1px solid #ddd; box-shadow: #ddd 0px 3px 3px; text-align: center; }
 .maple-header-small-container { width: 66.6666666666%; display: inline-block; } 
 .maple-header-small-logo { margin: 10px 0; }
+#maple-header-small-ani { z-index: 9; display: none; }
+.maple-footer-small { position: fixed; bottom: -70px; height: 70px; width: 100%; background-color: #fff; border-top: 1px solid #ddd; box-shadow: #ddd 0px -3px 3px; text-align: center; }
+#maple-footer-small-ani { z-index: 8; display: none; }
 
 .maple-body { margin: 0 auto; max-width: 1440px; padding: 50px 0; }
 .maple-body-wrapper { overflow: hidden; }
@@ -49,3 +52,22 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, dd, .maple-font {
 
 
 .maple-footer { height: 100px; background-color: transparent; border-top: 1px solid #ddd; box-shadow: #ddd 0px -3px 3px; }
+
+
+.maple-mask-header { position: fixed; top: -75px; z-index: 9; height: 70px; width: 100%; background-color: #fff; border-bottom: 1px solid #ddd; box-shadow: #ddd 0px 3px 3px; text-align: center; }
+.maple-mask-header-container { width: 66.6666666666%; display: inline-block; } 
+.maple-mask-header-logo { margin: 10px 0; }
+.maple-mask-footer { position: fixed; bottom: -105px; z-index: 9; width: 100%; height: 100px; background-color: transparent; border-top: 1px solid #ddd; box-shadow: #ddd 0px -3px 3px; }
+
+#maple-title, #maple-header-small-logo, #maple-header-small-logo-ani { cursor: pointer; }
+#maple-header-small-ani { height: 50%; box-shadow: none; border-bottom: none; top: 0; display: block; visibility: visible; }
+#maple-header-small-container-ani { margin-top: calc(50vh - 70px); }
+#maple-footer-small-ani { height: calc(50vh + 70px); box-shadow: none; border-top: none; display: block; visibility: visible; }
+
+
+
+
+
+
+
+

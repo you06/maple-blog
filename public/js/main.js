@@ -1,17 +1,27 @@
 "use strict";
 
 (function() {
+  var maple = {};
+  window.Maple = maple;
+  var move = require('move');
+  window._move = move;
   // fixed the retina display
   retinajs( document.querySelectorAll('img') );
   retinajs( document.getElementById('meta-favicon') );
-  
+
   var headerListener = listenHeader();
 
-
-  function closeBody() {
+  function closeBody(callback) {
     var mapleHeader = document.getElementById('maple-header'),
         mapleHeaderSmall = document.getElementById('maple-header-small'),
         mapleFooter = document.getElementById('maple-footer');
+
+    var winHeight = 0;
+    if (window.innerHeight) {
+      winHeight = window.innerHeight;
+    } else if ((document.body) && (document.body.clientHeight)) {
+      winHeight = document.body.clientHeight;
+    }
 
     var isHeaderSmall = false,
         isFooterIn = false;
@@ -23,8 +33,94 @@
       }
     }
 
+    if (window.scrollY + winHeight > mapleFooter.offsetTop) {
+      isFooterIn = true;
+    }
 
+    if (isHeaderSmall) {
+      $('#maple-footer-small-ani').css({
+        visibility: 'visible',
+        display: 'block'
+      });
+      $('#maple-header-small-ani').css({
+        visibility: 'visible',
+        display: 'block'
+      });
+      setTimeout(function() {
+        move('#maple-header-small-ani')
+          .set('height', winHeight / 2)
+          .set('box-shadow', 'none')
+          .set('border-bottom', 'none')
+          .set('top', 0)
+          .end();
+        move('#maple-header-small-container-ani')
+          .set('margin-top', parseInt(winHeight / 2 - $('#maple-header-small-container').height()))
+          .end();
+        move('#maple-footer-small-ani')
+          .set('height', winHeight / 2 + 70)
+          .set('box-shadow', 'none')
+          .set('border-top', 'none')
+          .end(function() {
+            setTimeout(function() {
+              $('#maple-footer-small-ani').css({
+                visibility: 'visible',
+                display: 'block'
+              });
+              $('#maple-header-small-ani').css({
+                visibility: 'visible',
+                display: 'block'
+              });
+              if (callback && 'function' === typeof callback) {
+                callback();
+              }
+            });
+          });
+      });
+    }
+    else if (!isHeaderSmall) {
+      $('#maple-header-small-ani').css('top', '-' + $('#maple-header-small-container').height());
+      $('#maple-footer-small-ani').css({
+        visibility: 'visible',
+        display: 'block'
+      });
+      $('#maple-header-small-ani').css({
+        visibility: 'visible',
+        display: 'block'
+      });
+      setTimeout(function() {
+        move('#maple-header-small-ani')
+          .set('height', winHeight / 2)
+          .set('box-shadow', 'none')
+          .set('border-bottom', 'none')
+          .set('top', 0)
+          .end();
+        move('#maple-header-small-container-ani')
+          .set('margin-top', parseInt(winHeight / 2 - $('#maple-header-small-container').height()))
+          .end();
+        move('#maple-footer-small-ani')
+          .set('height', winHeight / 2 + 70)
+          .set('box-shadow', 'none')
+          .set('border-top', 'none')
+          .end(function() {
+            setTimeout(function() {
+              $('#maple-footer-small-ani').css({
+                visibility: 'visible',
+                display: 'block'
+              });
+              $('#maple-header-small-ani').css({
+                visibility: 'visible',
+                display: 'block'
+              });
+              if (callback && 'function' === typeof callback) {
+                callback();
+              }
+            });
+          });
+      });
+    }
+  }
 
+  function firstCloseBody(callback) {
     var winHeight = 0;
     if (window.innerHeight) {
       winHeight = window.innerHeight;
@@ -32,10 +128,55 @@
       winHeight = document.body.clientHeight;
     }
 
-    console.log(isHeaderSmall, isFooterIn);
+    $('#maple-header-small-ani').css({
+      height: winHeight / 2,
+      'box-shadow': 'none',
+      'border-bottom': 'none',
+      top: 0,
+      display: 'block',
+      visibility: 'visible'
+    });
+    $('#maple-header-small-container-ani').css({
+      'margin-top': parseInt(winHeight / 2 - $('#maple-header-small-container').height())
+    });
+    $('#maple-footer-small-ani').css({
+      height: winHeight / 2 + 70,
+      'box-shadow': 'none',
+      'border-top': 'none',
+      display: 'block',
+      visibility: 'visible'
+    });
   }
 
-  window._closeBody = closeBody;
+  function openBody(callback) {
+    move('#maple-header-small-ani')
+      .set('height', 70)
+      .set('box-shadow', '#ddd 0px 3px 3px')
+      .set('border-bottom', '1px 1solid #ddd')
+      .set('top', -75)
+      .end();
+    move('#maple-header-small-container-ani')
+      .set('margin-top', 0)
+      .end();
+    move('#maple-footer-small-ani')
+      .set('height', 70)
+      .set('box-shadow', '#ddd 0px -3px 3px')
+      .set('border-top', '1px 1solid #ddd')
+      .end(function() {
+        $('#maple-footer-small-ani').css('visibility', 'hidden');
+        setTimeout(function() {
+          if (callback && 'function' === typeof callback) {
+            callback();
+          }
+        });
+      });
+  }
+
+  document.getElementById('maple-title').addEventListener('click', closeBody);
+  document.getElementById('maple-header-small-logo').addEventListener('click', closeBody);
+  document.getElementById('maple-header-small-logo-ani').addEventListener('click', openBody);
+  maple.closeBody = closeBody;
+  maple.openBody = openBody;
 
   function listenHeader() {
     var headerStatus = true;
@@ -108,6 +249,18 @@
         if (callback) callback();
       }
     }, 1000 / FPS);
+  }
+
+  function getObjHeight(_$) {
+    console.log(_$)
+    var _$Height = 0;
+    if ('none' === _$.css('display')) {
+      _$.css({
+        visibility: 'visible'
+      });
+      _$Height = _$.height();
+    }
+    return _$Height;
   }
 
 })()

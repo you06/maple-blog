@@ -17,15 +17,27 @@
   <header class="maple-header" id="maple-header">
     <section class="words">
       <section class="bloc col-12 word-center">
-        <h1>Mirrors</h1>
+        <h1 id="maple-title">Mirrors</h1>
         <h2>In solitude, where we are at least alone.</h2>
       </section>
     </section>
   </header>
 
   <header class="maple-header-small hidden" id="maple-header-small">
-    <div class="maple-header-small-container">
-      <img src="/image/avatar.png" data-rjs="3" class="maple-header-small-logo">
+    <div class="maple-header-small-container" id="maple-header-small-container">
+      <img src="/image/avatar.png" data-rjs="3" class="maple-header-small-logo" id="maple-header-small-logo">
+    </div>
+  </header>
+
+  <header class="maple-header-small hidden" id="maple-header-small-ani">
+    <div class="maple-header-small-container" id="maple-header-small-container-ani">
+      <img src="/image/avatar.png" data-rjs="3" class="maple-header-small-logo" id="maple-header-small-logo-ani">
+    </div>
+  </header>
+
+  <header class="maple-mask-header" id="maple-mask-header">
+    <div class="maple-mask-header-container">
+      <img src="/image/avatar.png" class="maple-mask-header-logo">
     </div>
   </header>
 
@@ -47,14 +59,20 @@
     </section>
   </section>
 
+  <section class="maple-footer-small" id="maple-footer-small-ani"></section>
+
   <footer class="maple-footer" id="maple-footer">
 
   </footer>
 
+
+  <footer class="maple-mask-footer" id="maple-mask-footer"></footer>
+
+  <script type="text/javascript" src="/js/move.build.js"></script>
   <script type="text/javascript" src="/js/retina.min.js"></script>
-  <script type="text/javascript" src="/js/router.js"></script>
-  <script type="text/javascript" src="/js/router.main.js"></script>
   <script type="text/javascript" src="/js/jquery.min.js"></script>
   <script type="text/javascript" src="/js/main.js"></script>
+  <script type="text/javascript" src="/js/router.js"></script>
+  <script type="text/javascript" src="/js/router.main.js"></script>
 </body>
 </html>
