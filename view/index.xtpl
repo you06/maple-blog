@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maple</title>
+  <!-- favicon -->
+  <link rel="icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="bookmark" href="/favicon.ico" type="image/x-icon">
+  <!-- css --> 
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+</head>
+<body>
+
+  <header class="maple-header" id="maple-header">
+    <section class="words">
+      <section class="bloc col-12 word-center">
+        <h1 id="maple-title">Maple</h1>
+        <h2>In solitude, where we are at least alone.</h2>
+      </section>
+    </section>
+  </header>
+
+  <header class="maple-header-small hidden" id="maple-header-small">
+    <div class="maple-header-small-container" id="maple-header-small-container">
+      <img src="/image/avatar.png" data-rjs="3" class="maple-header-small-logo" id="maple-header-small-logo">
+    </div>
+  </header>
+
+  <header class="maple-header-small hidden" id="maple-header-small-ani">
+    <div class="maple-header-small-container" id="maple-header-small-container-ani">
+      <img src="/image/avatar.png" data-rjs="3" class="maple-header-small-logo" id="maple-header-small-logo-ani">
+    </div>
+  </header>
+
+  <header class="maple-mask-header" id="maple-mask-header">
+    <div class="maple-mask-header-container">
+      <img src="/image/avatar.png" class="maple-mask-header-logo">
+    </div>
+  </header>
+
+  <section class="maple-body-wrapper">
+    <section class="maple-body">
+      <section class="bloc col-2"></section>
+      <section class="bloc col-8" id="body-wrapper">
+
+      </section>
+      <div id="loading-wrapper"></div>
+      <section class="cb"></section>
+    </section>
+  </section>
+
+  <section class="maple-footer-small" id="maple-footer-small-ani"></section>
+
+  <footer class="maple-footer" id="maple-footer">
+    <div class="maple-footer-bloc col-12">
+      <a href="http://weibo.com/u/3805189017" target="_blank" class="maple-footer-logo"><i class="fa fa-weibo" aria-hidden="true"></i></a>
+      <a href="https://git.io/T" target="_blank" class="maple-footer-logo"><i class="fa fa-github" aria-hidden="true"></i></a>
+      <a href="https://steamcommunity.com/id/you06/" target="_blank" class="maple-footer-logo"><i class="fa fa-steam" aria-hidden="true"></i></a>
+      <a href="mailto:you1474600@gmail.com" target="_blank" class="maple-footer-logo"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    </div>
+    <div class="maple-footer-bloc col-12">
+      <p>爱よ 蛇の化身になれ</p>
+    </div>
+  </footer>
+
+  <footer class="maple-mask-footer" id="maple-mask-footer"></footer>
+
+  <script type="text/javascript" src="/js/include/move.build.js"></script>
+  <script type="text/javascript" src="/js/include/retina.min.js"></script>
+  <script type="text/javascript" src="/js/include/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
+  <script type="text/javascript" src="/js/router.js"></script>
+  <script type="text/javascript" src="/js/router.main.js"></script>
+</body>
+</html>

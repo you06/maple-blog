@@ -1,0 +1,14 @@
+{
+    "path": {
+        "static": "./Public",
+        "viewDir": "./view"
+    },
+    "app": {
+        "name": "MapleBlog",
+        "port": 3000
+    },
+    "websocket": {
+        "name": "MapleSocket",
+        "port": 3001
+    }
+}

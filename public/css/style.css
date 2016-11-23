@@ -1,0 +1,145 @@
+/* fonts */
+@font-face {
+  font-family: 'didot';
+
+  src: url('../fonts/Didot.eot');
+  src: url('../fonts/Didot.eot?#iefix') format('embedded-opentype'), url('../fonts/Didot.woff2') format('woff2'), url('../fonts/Didot.woff') format('woff'), url('../fonts/Didot.ttf') format('truetype'), url('../fonts/Didot.svg#glyphicons_halflingsregular') format('svg');
+}
+
+/* index */
+
+
+/* header */
+.header {
+    height: 300px;
+    background-color: #5DBFD8;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+#logo-line {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 120px;
+}
+#logo-line img {
+    margin-right: 15px;
+}
+.title p, .title span {
+    font-family: didot, Microsoft YaHei;
+    color: #fff;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.title .home {
+    font-size: 35px;
+}
+.title .motto {
+    font-size: 25px;
+}
+/* body */
+.body {
+    position: relative;
+}
+.body > .colorbar {
+    width: 5px;
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 25%;
+    background-image: -moz-linear-gradient(top, #5DBFD8, #50AF99);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #5DBFD8), color-stop(1, #50AF99));
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5DBFD8', endColorstr='#50AF99', GradientType='0');
+}
+.content {
+    padding: 50px 0;
+}
+.item-container {
+    padding: 5px 0;
+}
+.item-timeline {
+    min-height: 1px;
+}
+.item-date {
+    padding: 30px;
+}
+.item-view {
+    padding-left: 35px;
+}
+.item-headimg {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #E56F89;
+}
+.item-headimg img {
+    width: 100%;
+    height: 100%;
+}
+.item-box {
+    padding-left: 30px;
+    padding-top: 40px;
+}
+.item-box-main {
+    min-height: 100px;
+    width: 800px;
+    border: 2px solid #cccccc;
+    margin-left: -2px;
+    padding: 0 20px;
+}
+.item-box-main .item-title {
+    font-size: 20px;
+    margin: 10px 0 5px 0;
+}
+.item-box-main .item-title a {
+    color: #333;
+}
+.item-box-main .item-info {
+    font-size: 14px;
+    color: #aaa;
+    margin: 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+.item-box-main .item-info .item-info-child {
+    padding-right: 20px;
+    margin-right: 20px;
+    border-right: 1px solid #ccc;
+}
+.item-box-main .item-info .item-info-child:last-child {
+    padding-right: 0;
+    margin-right: 0;
+    border-right: none;
+}
+.item-box-main .item-info .item-info-child .item-info-tag {
+    margin-right: 10px;
+}
+.item-box-main .item-info .item-info-child .item-info-tag a {
+    color: #aaa;
+}
+.item-box-main .item-info .item-info-child .item-info-tag a:focus {
+    color: inherit;
+    text-decoration: none;
+}
+.item-box-main .item-info .item-info-child .item-info-tag:last-child {
+    margin-right: 0;
+}
+.item-box-main .item-preview {
+    text-indent: 2em;
+}
+/* footer */
+.footer {
+    height: 250px;
+    background-color: #50AF99;
+    text-align: center;
+    color: #FFF;
+}
+.footer > img {
+    margin: 30px 0 10px 0;
+}
+.footer a {
+    text-decoration: underline;
+    color: #FFF;
+}
+.footer p {
+    color: #FFF;
+}
