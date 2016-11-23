@@ -172,7 +172,9 @@
       });
   }
 
-  document.getElementById('maple-title').addEventListener('click', closeBody);
+  document.getElementById('maple-title').addEventListener('click', function() {
+    Router.jump('/index');
+  });
   document.getElementById('maple-header-small-logo').addEventListener('click', closeBody);
   document.getElementById('maple-header-small-logo-ani').addEventListener('click', openBody);
   maple.closeBody = closeBody;

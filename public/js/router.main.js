@@ -6,6 +6,8 @@
   Router.route('/', function() {loadPage('/component/index.html', 'home');});
   Router.route('/index', function() {loadPage('/component/index.html', 'home');});
   Router.route('/index.html', function() {loadPage('/component/index.html', 'home');});
+  Router.route('/article/:id', function() {loadPage('/component/article.html', 'article');});
+  Router.route('/article/:id/', function() {loadPage('/component/article.html', 'article');});
 
   Router.route('404', function() {loadPage('/component/404.html', 'not-found-404')});
 

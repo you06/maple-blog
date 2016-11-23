@@ -30,4 +30,4 @@ app.use(function *() {
 });
 
 app.listen(configs.app.port);
-console.log('app run at port', configs.app.port);
+console.log('maple run at port', configs.app.port);

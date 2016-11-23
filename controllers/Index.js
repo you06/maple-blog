@@ -1,37 +1,40 @@
 "use strict";
-var xtpl = require('xtpl');
-var fs = require('fs');
-var markdown = require('markdown').markdown;
+const xtpl = require('xtpl');
+const path = require('path');
+const markdown = require('markdown').markdown;
 const configs = require('../configs/configs.js');
 
+var count = 1;
+var lastCount = count;
 module.exports.index = function* index (next) {
-    var resBody = '';
+    let self = this
 
-    xtpl.renderFile(
-        configs.path.views + '/index.xtpl',
-        {
-            PUBLIC: '/public',
-            articles: 'docs'
-        },
-        function(error,content){
-            if (error) {
-                resBody = error;
-                console.log('[ERROR]', error);
+    let promise = new Promise(function(resolve, reject) {
+        console.log('start page promise['+count+']');
+        lastCount = count;
+        count++;
+        xtpl.renderFile(
+            path.join(configs.path.views + '/index.xtpl'),
+            {
+                PUBLIC: '/public',
+                articles: 'docs'
+            },
+            function(error, content){
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    resolve(content)
+                }
             }
-            else {
-                resBody = content;
-                return index();
-            }
-        }
-    );
+        );
+    });
 
-    this.body = resBody;
-}
-
-function* loadData() {
-
-}
-
-module.exports.article = function* article(next) {
-
+    promise.then(function(value) {
+        console.log('end page promise['+count+']');
+        self.body = value;
+    }, function(error) {
+        self.body = error;
+        console.log('[ERROR]', error);
+    });
 }

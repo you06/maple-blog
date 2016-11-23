@@ -19,7 +19,7 @@
       if (pathArr.length === indexArr.length && index !== '/' && index !== '404') {
         for (var i = 0; i < indexArr.length; i++) {
           var regex = new RegExp(indexArr[i]);
-          if (!regex.test(pathArr[i])) {
+          if (!regex.test(pathArr[i]) && ':' !== indexArr[i][0]) {
             hitRoute = false;
           }
         }
