@@ -55,13 +55,13 @@
   <section class="maple-footer-small" id="maple-footer-small-ani"></section>
 
   <footer class="maple-footer" id="maple-footer">
-    <div class="maple-footer-bloc col-12">
+    <div class="maple-footer-bloc">
       <a href="http://weibo.com/u/3805189017" target="_blank" class="maple-footer-logo"><i class="fa fa-weibo" aria-hidden="true"></i></a>
       <a href="https://git.io/T" target="_blank" class="maple-footer-logo"><i class="fa fa-github" aria-hidden="true"></i></a>
       <a href="https://steamcommunity.com/id/you06/" target="_blank" class="maple-footer-logo"><i class="fa fa-steam" aria-hidden="true"></i></a>
       <a href="mailto:you1474600@gmail.com" target="_blank" class="maple-footer-logo"><i class="fa fa-envelope" aria-hidden="true"></i></a>
     </div>
-    <div class="maple-footer-bloc col-12">
+    <div class="maple-footer-bloc">
       <p>爱よ 蛇の化身になれ</p>
     </div>
   </footer>

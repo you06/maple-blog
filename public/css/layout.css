@@ -43,7 +43,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, dd, .maple-font {
 
 .maple-body { margin: 0 auto; max-width: 1440px; padding: 50px 0 0 0; }
 .maple-body-wrapper { overflow: hidden; }
-.maple-title { font-size: 17px; color: #555; text-decoration: none; }
+.maple-title { font-size: 17px; color: #555; text-decoration: none; font-family: 华文黑体, Microsoft YaHei, 微软雅黑; }
 .maple-title:hover { color: #888; }
 .maple-info { color: #666; }
 .maple-datetime { font-size: 13px; color: #777; margin-right: 20px; }
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, dd, .maple-font {
 .maple-intro { text-indent: 2em; }
 
 .maple-footer { height: 100px; padding-top: 15px; background-color: transparent; border-top: 1px solid #ddd; box-shadow: #ddd 0px -3px 3px; }
-.maple-footer .maple-footer-bloc { padding: 10px; display: inline-block; text-align: center; font-size: 12px; }
+.maple-footer .maple-footer-bloc { width: 100%; padding: 10px; display: inline-block; text-align: center; font-size: 12px; }
 .maple-footer .maple-footer-bloc p { margin: 0; text-align: center; color: #666; }
 .maple-footer .maple-footer-bloc .maple-footer-logo { font-size: 20px; margin: 0 15px; color: #666; }
 
