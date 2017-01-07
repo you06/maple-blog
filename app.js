@@ -15,6 +15,9 @@ const staticFilePath = configs.path.static;
 app.use(serve(staticFilePath));
 console.log('static file folder:', staticFilePath);
 
+const session = require('koa-generic-session');
+app.use(session());
+
 // routes
 app.use(require("./route/routes"));
 

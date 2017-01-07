@@ -1,5 +1,6 @@
 (function () {
   "use strict";
+  window.routeParam = [];
   function Router () {};
   Router.prototype.routeTable = {};
   Router.prototype.notFount = function() {}
@@ -14,6 +15,7 @@
   Router.prototype.lookTable = function(pathname) {
     for (var index in Router.prototype.routeTable) {
       var hitRoute = true;
+      var routeParam = [];
       var indexArr = index.split('/');
       var pathArr = pathname.split('/');
       if (pathArr.length === indexArr.length && index !== '/' && index !== '404') {
@@ -22,12 +24,16 @@
           if (!regex.test(pathArr[i]) && ':' !== indexArr[i][0]) {
             hitRoute = false;
           }
+          else if (':' === indexArr[i][0]) {
+            routeParam[indexArr[i].substr(1, indexArr[i].length - 1)] = pathArr[i];
+          }
         }
       }
       else {
         hitRoute = false;
       }
       if (hitRoute) {
+        window.routeParam = routeParam;
         return Router.prototype.routeTable[index];
       }
     }
