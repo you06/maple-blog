@@ -38,7 +38,7 @@ function articleInit() {
             } else {
                 return true;
             }
-        })
+        });
     }, function(error) {
         console.log(error);
         console.log('[ERROR]', error);

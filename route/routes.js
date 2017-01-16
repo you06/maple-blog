@@ -16,6 +16,7 @@ router.get('/', Application.index);
 router.get('/api/article', Article.enum);
 router.get('/api/article/:id/info', Article.getArticleInfo);
 router.get('/api/article/:id', Article.getArticle);
+router.get('/admin/content', Admin.admin);
 router.get('/admin', Admin.index);
 router.get('/admin.html', Admin.index);
 router.post('/admin/login', Admin.login);

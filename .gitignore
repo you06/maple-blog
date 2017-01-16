@@ -4,3 +4,4 @@ node_modules/
 upload/config/backup
 .gitignore
 upload/markdown/
+user.json

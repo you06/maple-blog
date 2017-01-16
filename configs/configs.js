@@ -12,6 +12,7 @@ const configs = require('../configs.json');
 const root = path.dirname(__dirname);
 
 module.exports.path = {};
+module.exports.path.root = root;
 module.exports.path.static = path.join(root, 'public');
 module.exports.path.views = path.join(root, 'view');
 module.exports.path.upload = path.join(root, 'upload');
@@ -21,4 +22,5 @@ module.exports.path.upload = path.join(root, 'upload');
 
 // port
 module.exports.app = configs.app;
+module.exports.cookie = configs.cookie;
 module.exports.websocket = configs.websocket;
