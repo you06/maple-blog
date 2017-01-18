@@ -4,3 +4,13 @@
 #maple-login-form .maple-login-inputs input { text-align: center; }
 
 .maple-body { padding-top: 70px; }
+.admin-section { padding: 5px; }
+.admin-section .admin-textarea { height: calc(100vh - 140px); border: 1px solid #ddd; color: #666; padding: 10px; outline: none; }
+.maple-admin-toolbar { height: 30px; margin-bottom: 5px; padding: 0 5px; }
+.maple-admin-toolbar .maple-toolbar-right { float: right; }
+.maple-admin-toolbar .maple-toolbar-left { float: left; }
+.maple-btn { height:30px; font-size: 14px; color: #555; background-color: #fff; border: 1px solid #ddd; border-radius: 4px; padding: 0 15px; cursor: pointer; outline: none; }
+.maple-upload-btn { position: relative; }
+.maple-upload-btn input { position: absolute; width: 100%; height: 100%; left: 0; top: 0; cursor: pointer; opacity: 0; }
+
+

@@ -42,8 +42,8 @@
 
   <section class="maple-body-wrapper">
     <section class="maple-body">
-      <section class="bloc col-2"></section>
-      <section class="bloc col-8" id="body-wrapper">
+      <section class="bloc col-1"></section>
+      <section class="bloc col-10" id="body-wrapper">
         <!--admin html-->
       </section>
       <div id="loading-wrapper"></div>
@@ -88,7 +88,13 @@
                   type: 'GET',
                   dataType: 'html',
                   success: function(res) {
-                    document.querySelector('#body-wrapper').innerHTML = res;
+                    var parsedHTML = parseHTML(res);
+                    document.querySelector('#body-wrapper').innerHTML = parsedHTML.htmlText;
+                    parsedHTML.scriptTags.forEach(function(item) {
+                      var createScript = $(item);
+                      createScript.attr('class', 'admin-page');
+                      $('head').append(createScript);
+                    });
                     openBody();
                   }
                 });
@@ -99,6 +105,14 @@
             }
           });
         });
+      });
+
+      window.addEventListener('keydown', function(event) {
+        if (username === document.activeElement || password === document.activeElement) {
+          if (13 === event.keyCode) {
+            loginBtn.click();
+          }
+        }
       });
 
       function fly(callback) {
@@ -210,13 +224,31 @@
         type: 'GET',
         dataType: 'html',
         success: function(res) {
-          document.querySelector('#body-wrapper').innerHTML = res;
+          var parsedHTML = parseHTML(res);
+          document.querySelector('#body-wrapper').innerHTML = parsedHTML.htmlText;
+          parsedHTML.scriptTags.forEach(function(item) {
+            var createScript = $(item);
+            createScript.attr('class', 'admin-page');
+            $('head').append(createScript);
+          });
           openBody();
         },
         error: function(err) {
           
         }
       });
+
+      function parseHTML(htmlText) {
+        // script tags should append to the DOM tree
+        htmlText = htmlText.replace(/\r\n/g, '\n');
+        var re = /<script.*>[\s\S]*<\/script>/g;
+        var scriptTags = htmlText.match(re);
+        htmlText = htmlText.replace(re, '');
+        return {
+          htmlText: htmlText,
+          scriptTags: scriptTags ? scriptTags : []
+        }
+      }
     })()
   </script>
 </body>

@@ -1,4 +1,5 @@
 "use strict";
+const os = require('os');
 const session = require('koa-session');
 const xtpl = require('xtpl');
 const fs = require('fs');
@@ -6,9 +7,13 @@ const path = require('path');
 const configs = require('../configs/configs.js');
 const coBody = require('co-body');
 const sha256 = require('sha256');
+const co = require('co');
+const oss = require('ali-oss');
+const parse = require('co-busboy');
+const Article = require('./Article')
 
 var userList = [];
-
+var client = new oss(configs.ossConfigs);
 userInit();
 
 function userInit() {
@@ -125,6 +130,102 @@ module.exports.admin = function* admin (next) {
             self.body = error;
             console.log('[ERROR]', error);
         });
+    }
+}
+
+module.exports.new = function* newArticle(next) {
+    if (!checkLogin(this.cookies.get('maple'))) {
+        this.status = 401;
+        this.body = 'login ლ(ﾟдﾟლ)';
+    } else {
+        let self = this;
+        let post = yield coBody.form(this);
+        if (post.title && post.page) {
+            let articleTree = yield new Promise(function(resolve, reject) {
+                fs.readFile(path.join(configs.path.upload, '/tree/tree.json'), 'utf-8', function(err, data) {
+                    if (err) {
+                        console.log('error occur!');
+                        reject(err.Error);
+                    } else {
+                        console.log(data)
+                        resolve(data);
+                    }
+                });
+            });
+            articleTree = JSON.parse(articleTree);
+            // 以后再来错误处理 TuT
+            let currentTime = new Date();
+            let filename = currentTime.getFullYear() + '-' 
+                + (currentTime.getMonth() + 1) + '-'
+                + currentTime.getDate() + '-'
+                + post.page + '.md';
+            let writeFilePromise = yield new Promise(function(resolve, reject) {
+                fs.writeFile(path.join(configs.path.upload, '/markdown/', filename), post.data, function(err, data) {
+                    let articleLeaf = {
+                        title: post.title,
+                        time: currentTime.getTime(),
+                        'last-update': currentTime.getTime(),
+                        page: post.page,
+                        preview: post.preview,
+                        tags: post.tags || ['闲聊'],
+                        file: filename
+                    }
+                    articleTree.push(articleLeaf);
+                    fs.writeFile(path.join(configs.path.upload, '/tree/tree.json'), JSON.stringify(articleTree), function() {
+                        resolve(true)
+                    })
+                })
+            });
+
+            if (true === writeFilePromise) {
+                self.body = {
+                    status: true,
+                    msg: 'ok'
+                }
+                Article.reload()
+            }
+        }
+    }
+}
+
+module.exports.update = function* updateArticle(next) {
+    this.body = 'update';
+}
+
+module.exports.uploadImage = function* uploadImage(next) {
+    if (!checkLogin(this.cookies.get('maple'))) {
+        this.status = 401;
+        this.body = 'login ლ(ﾟдﾟლ)';
+    } else {
+        let self = this;
+        let parts = parse(this);
+        let getSuffix = /\.([a-zA-Z0-9]*)$/i;
+        var part;
+        
+        while ((part = yield parts)) {
+            if (part && part.filename) {
+                var suffix = getSuffix.exec(part.filename)[1];
+            }
+            var filename = sha256(new Date().getFullYear() + '-' + new Date().getMonth() + '-' + new Date().getDate()
+                + Math.random().toString()).substr(10,16)+ '.' + suffix
+            var stream = fs.createWriteStream(path.join(os.tmpdir(), filename));
+            part.pipe(stream);
+            // console.log('uploading %s -> %s', part.filename, stream.path);
+        }
+        
+        try {
+            client.useBucket('maple-blog');
+            let result = yield client.put('/article/image/' + filename, stream.path);
+            let imageUrl = result.res.requestUrls[0].replace('http://', 'https://');
+            self.body = {
+                status: true,
+                url: imageUrl
+            }
+        }
+        catch (error) {
+            self.status = 500;
+            self.body = error.msg;
+        }
     }
 }
 

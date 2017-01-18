@@ -20,6 +20,9 @@ router.get('/admin/content', Admin.admin);
 router.get('/admin', Admin.index);
 router.get('/admin.html', Admin.index);
 router.post('/admin/login', Admin.login);
+router.post('/admin/leaf', Admin.new);
+router.post('/admin/leaf/:id', Admin.update);
+router.post('/admin/api/image', Admin.uploadImage);
 router.get('/*', Index.index);
 
 module.exports = router.routes();

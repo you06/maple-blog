@@ -45,6 +45,8 @@ function articleInit() {
     });
 }
 
+module.exports.reload = articleInit;
+
 module.exports.enum = function* index (next) {
     this.body = JSON.stringify(articleTree);
 }
@@ -76,9 +78,10 @@ module.exports.getArticle = function* article(next) {
             self.body = '404 NOT FOUND';
         } else {
             let promise = yield new Promise(function(resolve, reject) {
+                console.log(path.join(configs.path.upload, '/markdown/' + articleTreeDict[articleId]['file']));
                 fs.readFile(path.join(configs.path.upload, '/markdown/' + articleTreeDict[articleId]['file']), 'utf-8', function(err, data) {
                     if (err) {
-                        console.log('error occur!');
+                        console.log('[ERROR]', err.message);
                         reject(err.Error);
                     } else {
                         resolve(data);

@@ -7,6 +7,7 @@ const path = require('path');
 
 // load configs.json
 const configs = require('../configs.json');
+const ossConfigs = require('../oss.conf.js').ossConf;
 
 // Located in the root directory of the project
 const root = path.dirname(__dirname);
@@ -24,3 +25,4 @@ module.exports.path.upload = path.join(root, 'upload');
 module.exports.app = configs.app;
 module.exports.cookie = configs.cookie;
 module.exports.websocket = configs.websocket;
+module.exports.ossConfigs = ossConfigs;
