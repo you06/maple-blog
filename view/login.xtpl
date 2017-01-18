@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maple</title>
+  <!-- favicon -->
+  <link rel="icon" href="/favicon.ico" mce_href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="bookmark" href="/favicon.ico" type="image/x-icon">
+  <!-- css --> 
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+  <header class="maple-header-small" id="maple-header-small">
+    <div class="maple-header-small-container" id="maple-header-small-container">
+      <img src="/image/avatar.png" data-rjs="3" class="maple-header-small-logo" id="maple-header-small-logo">
+    </div>
+  </header>
+
+  <header class="maple-header-small hidden" id="maple-header-small-ani">
+    <div class="maple-header-small-container" id="maple-header-small-container-ani">
+      <img src="/image/avatar.png" data-rjs="3" class="maple-header-small-logo" id="maple-header-small-logo-ani">
+      <form id="maple-login-form" action="">
+        <div class="maple-login-inputs">
+          <input type="password" id="maple-login-username">
+          <input type="password" id="maple-login-password">
+        </div>
+        <br>
+      </form>
+    </div>
+  </header>
+
+  <header class="maple-mask-header" id="maple-mask-header">
+    <div class="maple-mask-header-container">
+      <img src="/image/avatar.png" class="maple-mask-header-logo">
+    </div>
+  </header>
+
+  <section class="maple-body-wrapper">
+    <section class="maple-body">
+      <section class="bloc col-1"></section>
+      <section class="bloc col-10" id="body-wrapper">
+        <!--admin html-->
+      </section>
+      <div id="loading-wrapper"></div>
+      <section class="cb"></section>
+    </section>
+  </section>
+
+  <section class="maple-footer-small" id="maple-footer-small-ani"></section>
+
+
+  <footer class="maple-mask-footer" id="maple-mask-footer"></footer>
+
+  <script type="text/javascript" src="/js/include/move.build.js"></script>
+  <script type="text/javascript" src="/js/include/retina.min.js"></script>
+  <script type="text/javascript" src="/js/include/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/include/sha256.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      var move = require('move');
+      window._move = move;
+      // fixed the retina display
+      retinajs( document.querySelectorAll('img') );
+      retinajs( document.getElementById('meta-favicon') );
+      var loginBtn = document.querySelector('#maple-header-small-logo-ani');
+      var username = document.querySelector('#maple-login-username');
+      var password = document.querySelector('#maple-login-password');
+      loginBtn.addEventListener('click', function() {
+        fly(function() {
+          $.ajax({
+            url: '/admin/login',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+              username: sha256(username.value),
+              password: sha256(sha256(password.value) + 'Maple' + username.value)
+            },
+            success: function(res) {
+              if (res.status) {
+                // apply for innerHTML
+                $.ajax({
+                  url: '/admin/content',
+                  type: 'GET',
+                  dataType: 'html',
+                  success: function(res) {
+                    var parsedHTML = parseHTML(res);
+                    document.querySelector('#body-wrapper').innerHTML = parsedHTML.htmlText;
+                    parsedHTML.scriptTags.forEach(function(item) {
+                      var createScript = $(item);
+                      createScript.attr('class', 'admin-page');
+                      $('head').append(createScript);
+                    });
+                    openBody();
+                  }
+                });
+                openBody();
+              } else {
+                shake();
+              }
+            }
+          });
+        });
+      });
+
+      window.addEventListener('keydown', function(event) {
+        if (username === document.activeElement || password === document.activeElement) {
+          if (13 === event.keyCode) {
+            loginBtn.click();
+          }
+        }
+      });
+
+      function fly(callback) {
+        move('#maple-header-small-logo-ani')
+          .set('transform', 'translate3d(-40px, -40px, 0)')
+          .set('opacity', '0')
+          .duration('.3s')
+          .end(function() {
+            $('#maple-header-small-logo-ani').css({
+              'transition-duration': '0ms',
+              transform: 'translate3d(10px, 10px, 0)'
+            });
+            setTimeout(function() {
+            move('#maple-header-small-logo-ani')
+              .set('transform', 'translate3d(0, 0, 0)')
+              .set('opacity', '1')
+              .duration('.15s')
+              .end(function() {
+                if (callback && 'function' === typeof callback) {
+                  callback();
+                }
+              });
+            }, 100)
+          });
+      }
+
+      function shake(callback) {
+        let duration = '.1s';
+        move('#maple-header-small-logo-ani')
+          .set('transform', 'translateX(5px)')
+          .duration(duration)
+		      .end(function() {
+            move('#maple-header-small-logo-ani')
+              .set('transform', 'translateX(-5px)')
+              .duration(duration)
+              .end(function() {
+                move('#maple-header-small-logo-ani')
+                  .set('transform', 'translateX(4px)')
+                  .duration(duration)
+                  .end(function() {
+                    move('#maple-header-small-logo-ani')
+                      .set('transform', 'translateX(-4px)')
+                      .duration(duration)
+                      .end(function() {
+                        move('#maple-header-small-logo-ani')
+                          .set('transform', 'translateX(3px)')
+                          .duration(duration)
+                          .end(function() {
+                            move('#maple-header-small-logo-ani')
+                              .set('transform', 'translateX(-3px)')
+                              .duration(duration)
+                              .end(function() {
+                                move('#maple-header-small-logo-ani')
+                                  .set('transform', 'translateX(2px)')
+                                  .duration(duration)
+                                  .end(function() {
+                                      move('#maple-header-small-logo-ani')
+                                        .set('transform', 'translateX(-1px)')
+                                        .duration(duration)
+                                        .end(function() {
+                                          move('#maple-header-small-logo-ani')
+                                            .set('transform', 'translateX(0px)')
+                                            .duration(duration)
+                                            .end(function() {
+                                              if (callback && 'function' === typeof callback) {
+                                                callback();
+                                              }
+                                          });
+                                      });
+                                  });
+                              });
+                          });
+                      });
+                  });
+              });
+          });
+      }
+
+      function openBody(callback) {
+        move('#maple-login-form')
+          .set('opacity', 0)
+          .end(function() {
+            move('#maple-header-small-ani')
+              .set('height', 70)
+              .set('box-shadow', '#ddd 0px 3px 3px')
+              .set('border-bottom', '1px 1solid #ddd')
+              .set('top', -105)
+              .end();
+            move('#maple-header-small-container-ani')
+              .set('margin-top', 0)
+              .end();
+            move('#maple-footer-small-ani')
+              .set('height', 70)
+              .set('box-shadow', '#ddd 0px -3px 3px')
+              .set('border-top', '1px 1solid #ddd')
+              .end(function() {
+                $('#maple-footer-small-ani').css('visibility', 'hidden');
+                setTimeout(function() {
+                  if (callback && 'function' === typeof callback) {
+                    callback();
+                  }
+                });
+              });
+          });
+      }
+      
+      $.ajax({
+        url: '/admin/content',
+        type: 'GET',
+        dataType: 'html',
+        success: function(res) {
+          var parsedHTML = parseHTML(res);
+          document.querySelector('#body-wrapper').innerHTML = parsedHTML.htmlText;
+          parsedHTML.scriptTags.forEach(function(item) {
+            var createScript = $(item);
+            createScript.attr('class', 'admin-page');
+            $('head').append(createScript);
+          });
+          openBody();
+        },
+        error: function(err) {
+          
+        }
+      });
+
+      function parseHTML(htmlText) {
+        // script tags should append to the DOM tree
+        htmlText = htmlText.replace(/\r\n/g, '\n');
+        var re = /<script.*>[\s\S]*<\/script>/g;
+        var scriptTags = htmlText.match(re);
+        htmlText = htmlText.replace(re, '');
+        return {
+          htmlText: htmlText,
+          scriptTags: scriptTags ? scriptTags : []
+        }
+      }
+    })()
+  </script>
+</body>
+</html>

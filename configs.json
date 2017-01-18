@@ -10,5 +10,12 @@
     "websocket": {
         "name": "MapleSocket",
         "port": 3001
+    },
+    "cookie": {
+        "key": "maple:session",
+        "maxAge": -1,
+        "overwrite": true,
+        "httpOnly": true,
+        "signed": true
     }
 }

@@ -5,43 +5,94 @@ const path = require('path');
 const markdown = require('markdown').markdown;
 const configs = require('../configs/configs.js');
 
-module.exports.enum = function* index (next) {
-    this.body = '';
-}
-var count = 1;
-var lastCount = count;
-module.exports.getArticle = function* article(next) {
-    let self = this;
+var articleTreeDict = {};
+var articleTree = [];
 
+articleInit();
+
+function articleInit() {
     let promise = new Promise(function(resolve, reject) {
-        console.log('start article promise['+count+']');
-        lastCount = count;
-        count++;
-
-        var data = fs.readFileSync(path.join(configs.path.upload, '/markdown/2016-11-24-hello-world.md'), 'utf-8');
-        if (data) {
-            resolve(data);
-        }
-        
-        // fs.readFile(path.join(configs.path.upload, '/markdown/2016-11-24-hello-world.md'), 'utf-8', function(err, data) {
-        //     console.log(err, data);
-        //     if (err) {
-        //         console.log('error occur!');
-        //         reject(err.Error);
-        //     } else {
-        //         console.log('end promise['+count+']');
-        //         resolve('data');
-        //     }
-        // });
+        fs.readFile(path.join(configs.path.upload, '/tree/tree.json'), 'utf-8', function(err, data) {
+            if (err) {
+                console.log('error occur!');
+                reject(err.Error);
+            } else {
+                resolve(data);
+            }
+        });
     });
 
     promise.then(function(value) {
-        console.log('end article promise['+lastCount+']');
-        self.body = markdown.toHTML(value);
+        let articleTreeOrigin = JSON.parse(value);
+        articleTree = JSON.parse(value);
+        // 以后再来错误处理 TuT
+        articleTreeOrigin.forEach(function(item, index) {
+            articleTreeDict[item['page']] = item;
+        });
+        articleTree.forEach(function(item, index) {
+            delete item['file'];
+        });
+        articleTree.sort(function(a, b){
+            if (a > b) {
+                return false;
+            } else {
+                return true;
+            }
+        });
     }, function(error) {
-        self.body = error;
-        console.log('------');
+        console.log(error);
         console.log('[ERROR]', error);
     });
+}
+
+module.exports.reload = articleInit;
+
+module.exports.enum = function* index (next) {
+    this.body = JSON.stringify(articleTree);
+}
+
+module.exports.getArticleInfo = function* articleInfo(next) {
+    let self = this;
+    if (this.params['id']) {
+        let articleId = this.params['id'];
+        if(!articleTreeDict[articleId]) {
+            self.body = '404 NOT FOUND';
+        } else {
+            self.body = {
+                title: articleTreeDict[articleId]['title'],
+                time: articleTreeDict[articleId]['time'],
+                tags: articleTreeDict[articleId]['tags']
+            };
+        }
+    } else {
+        self.body = '401 BAD REQUEST';
+    }
+
+}
+
+module.exports.getArticle = function* article(next) {
+    let self = this;
+    if (this.params['id']) {
+        let articleId = this.params['id'];
+        if(!articleTreeDict[articleId]) {
+            self.body = '404 NOT FOUND';
+        } else {
+            let promise = yield new Promise(function(resolve, reject) {
+                console.log(path.join(configs.path.upload, '/markdown/' + articleTreeDict[articleId]['file']));
+                fs.readFile(path.join(configs.path.upload, '/markdown/' + articleTreeDict[articleId]['file']), 'utf-8', function(err, data) {
+                    if (err) {
+                        console.log('[ERROR]', err.message);
+                        reject(err.Error);
+                    } else {
+                        resolve(data);
+                    }
+                });
+            });
+
+            self.body = markdown.toHTML(promise);
+        }
+    } else {
+        self.body = '401 BAD REQUEST';
+    }
 
 }

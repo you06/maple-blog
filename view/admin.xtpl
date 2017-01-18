@@ -1,0 +1,52 @@
+<link rel="stylesheet" href="/css/article.css">
+<section class="col-12 maple-admin-toolbar">
+  <button id="maple-upload-image" class="maple-btn maple-toolbar-left maple-upload-btn">
+    <i class="fa fa-file-image-o" aria-hidden="true"></i>
+    <input type="file" name="file" id="maple-upload-image-input">
+  </button>
+  <button id="maple-send" class="maple-btn maple-toolbar-right">Go</button>
+</section>
+<section class="admin-left admin-section col-6">
+  <textarea name="" id="markdown-text" class="admin-textarea col-12" cols="30" rows="10"></textarea>
+</section>
+<sectin class="admin-right admin-section maple-article-container col-6">
+  <div name="" id="view-text" class="admin-textarea maple-article-content col-12" cols="30" rows="10" disabled="disabled"></div>
+</sectin>
+<script src="/js/marked.min.js"></script>
+<script src="/js/jquery.ajaxfileupload.js"></script>
+<script>
+  (function() {
+    var markdownText = document.querySelector('#markdown-text');
+    var viewText = document.querySelector('#view-text');
+
+    function parseMarkdown() {
+      viewText.innerHTML = marked(markdownText.value);
+    }
+
+    function postLeaf() {
+      
+    }
+
+      
+    $('#maple-upload-image-input').AjaxFileUpload({
+      action: '/admin/api/image',
+      onChange: function(filename) {
+
+      },
+      onSubmit: function(filename) {
+        return true;
+      },
+      onComplete: function(filename, response) {
+        if (response.status) {
+          var imgMarkdownText = '![](' + response.url + ')';
+          markdownText.value = markdownText.value + '\n\n' + imgMarkdownText;
+          parseMarkdown();
+        }
+      }
+    });
+
+    markdownText.addEventListener('input', parseMarkdown);
+    document.querySelector('#maple-send', postLeaf);
+
+  })()
+</script>

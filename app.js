@@ -15,6 +15,10 @@ const staticFilePath = configs.path.static;
 app.use(serve(staticFilePath));
 console.log('static file folder:', staticFilePath);
 
+const session = require('koa-session');
+app.keys = ['maple story'];
+app.use(session(configs.cookie, app));
+
 // routes
 app.use(require("./route/routes"));
 
