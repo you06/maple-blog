@@ -1,0 +1,13 @@
+.maple-modal-cover { display: none; position: fixed; height: 100%; height: 100vh; width: 100%; width: 100vw; top: 0; left: 0; background-color: rgba(0, 0, 0, 0.2); z-index: 9998; transition: 0.5s; opacity: 0; cursor: pointer; }
+.maple-modal-block { display: none; position: fixed; height: 40%; height: 40vh; width: 60%; width: 60vw; top: 30%; top: 30vh; left: 20%; left: 20vw; z-index: 9999; padding: 15px; border-radius: 5px; border: 1px solid #bbb; background-color: #fff; box-shadow: #959698 0px 5px 5px; outline: none; transition: 0.5s; opacity: 0; overflow-y: auto; }
+.maple-modal-block label { width: 100px; display: inline-block; color: #666; font-size: 14px; }
+.maple-modal-block .maple-modal-title { width: 100%; font-size: 16px; }
+.maple-modal-block input { height: 30px; margin: 15px; outline: none; border-color: #ccc; border-width: 0 0 1px 0; }
+.maple-modal-block hr {
+    height: 1px;
+    border: none;
+    background: -webkit-linear-gradient(left, white, #666, white);
+    background: -o-linear-gradient(left, white, #666, white);
+    background: -moz-linear-gradient(left, white, #666, white);
+    background: linear-gradient(left, white, #666, white);
+}
