@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/css/article.css">
+<link rel="stylesheet" href="/css/maple-modal.css">
 <section class="col-12 maple-admin-toolbar">
   <button id="maple-upload-image" class="maple-btn maple-toolbar-left maple-upload-btn">
     <i class="fa fa-file-image-o" aria-hidden="true"></i>
@@ -12,19 +13,48 @@
 <sectin class="admin-right admin-section maple-article-container col-6">
   <div name="" id="view-text" class="admin-textarea maple-article-content col-12" cols="30" rows="10" disabled="disabled"></div>
 </sectin>
+<div id="maple-modal">
+  <label class="maple-modal-title">Add article info</label>
+  <hr>
+  <label>Title</label><input id="maple-send-title" type="text"><br>
+  <label>Page</label><input id="maple-send-page" type="text"><br>
+  <label>Tags</label><input id="maple-send-tags" type="text" placeholder="use ',' to split"><br>
+  <label>Preview</label><input id="maple-send-preview" type="text"><br>
+  <button class="maple-btn" id="maple-send-submit">Submit</button>
+</div>
 <script src="/js/marked.min.js"></script>
 <script src="/js/jquery.ajaxfileupload.js"></script>
+<script src="/js/maple.modal.js"></script>
 <script>
   (function() {
     var markdownText = document.querySelector('#markdown-text');
     var viewText = document.querySelector('#view-text');
+    var mapleSend = document.querySelector('#maple-send');
+    var mapleSendSubmit = document.querySelector('#maple-send-submit');
+    var modal = mapleModal('#maple-modal');
 
     function parseMarkdown() {
       viewText.innerHTML = marked(markdownText.value);
     }
 
     function postLeaf() {
-      
+      $.ajax({
+        url: '/admin/leaf',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          title: document.querySelector('#maple-send-title').value,
+          page: document.querySelector('#maple-send-page').value,
+          preview: document.querySelector('#maple-send-preview').value,
+          tags: document.querySelector('#maple-send-tags').value.split(','),
+          data: markdownText.value
+        },
+        success: function(res) {
+          if (res.status) {
+            document.location = '/index';
+          }
+        }
+      })
     }
 
       
@@ -46,7 +76,10 @@
     });
 
     markdownText.addEventListener('input', parseMarkdown);
-    document.querySelector('#maple-send', postLeaf);
+    mapleSend.addEventListener('click', function() {
+      modal.show();
+    });
+    mapleSendSubmit.addEventListener('click', postLeaf);
 
   })()
 </script>

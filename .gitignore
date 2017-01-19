@@ -6,3 +6,4 @@ upload/config/backup
 upload/markdown/
 user.json
 oss.conf.js
+upload/tree/tree.json
