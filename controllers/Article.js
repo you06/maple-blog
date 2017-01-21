@@ -2,8 +2,14 @@
 const xtpl = require('xtpl');
 const fs = require('fs');
 const path = require('path');
-const markdown = require('markdown').markdown;
+const marked = require('marked');
 const configs = require('../configs/configs.js');
+
+marked.setOptions({
+  highlight: function (code) {
+    return require('highlight.js').highlightAuto(code).value;
+  }
+});
 
 var articleTreeDict = {};
 var articleTree = [];
@@ -89,7 +95,7 @@ module.exports.getArticle = function* article(next) {
                 });
             });
 
-            self.body = markdown.toHTML(promise);
+            self.body = marked(promise);
         }
     } else {
         self.body = '401 BAD REQUEST';

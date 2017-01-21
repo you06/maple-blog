@@ -57,9 +57,11 @@
   <footer class="maple-mask-footer" id="maple-mask-footer"></footer>
 
   <script type="text/javascript" src="/js/include/move.build.js"></script>
+  <script type="text/javascript" src="/js/include/highlight.pack.js"></script>
   <script type="text/javascript" src="/js/include/retina.min.js"></script>
   <script type="text/javascript" src="/js/include/jquery.min.js"></script>
   <script type="text/javascript" src="/js/include/sha256.min.js"></script>
+  
   <script type="text/javascript">
     (function() {
       var move = require('move');
