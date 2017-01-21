@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="/css/article.css">
 <link rel="stylesheet" href="/css/maple-modal.css">
+<link rel="stylesheet" href="/css/tomorrow.css">
 <section class="col-12 maple-admin-toolbar">
   <button id="maple-upload-image" class="maple-btn maple-toolbar-left maple-upload-btn">
     <i class="fa fa-file-image-o" aria-hidden="true"></i>
@@ -32,6 +33,12 @@
     var mapleSend = document.querySelector('#maple-send');
     var mapleSendSubmit = document.querySelector('#maple-send-submit');
     var modal = mapleModal('#maple-modal');
+
+    marked.setOptions({
+      highlight: function (code) {
+        return hljs.highlightAuto(code).value;
+      }
+    });
 
     function parseMarkdown() {
       viewText.innerHTML = marked(markdownText.value);
