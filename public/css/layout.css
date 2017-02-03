@@ -74,9 +74,12 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, dd, .maple-font {
 #maple-header-small-container-ani { margin-top: calc(50vh - 70px); }
 #maple-footer-small-ani { height: calc(50vh + 70px); box-shadow: none; border-top: none; display: block; visibility: visible; }
 
+.maple-license { display: inline-block; height: 30px; opacity: 0.65; }
+.maple-license-desc { display: inline-block; text-align: left; }
+.maple-license-desc a { color: #4271ae; }
 
-
-
-
+@media screen and (max-width: 700px) {
+  .maple-license-desc { display: block; text-align: center; }
+}
 
 
