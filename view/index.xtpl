@@ -63,6 +63,10 @@
       <a href="mailto:you1474600@gmail.com" target="_blank" class="maple-footer-logo"><i class="fa fa-envelope" aria-hidden="true"></i></a>
     </div>
     <div class="maple-footer-bloc">
+      <img class="maple-license" src="/image/cc-by-nc-nd.svg">
+      <span class="maple-license-desc">如无特别说明，所有作品均采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="a_blank">知识共享Attribution-<br>NonCommercial-NoDerivatives 4.0 国际许可协议</a>进行许可</span>
+    </div>
+    <div class="maple-footer-bloc">
       <p>爱よ 蛇の化身になれ</p>
     </div>
   </footer>
