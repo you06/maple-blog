@@ -5,7 +5,7 @@
 
 .maple-body { padding-top: 70px; }
 .admin-section { padding: 5px; }
-.admin-section .admin-textarea { height: calc(100vh - 140px); border: 1px solid #ddd; color: #666; padding: 10px; outline: none; }
+.admin-section .admin-textarea { height: calc(100vh - 140px); overflow-y: auto; border: 1px solid #ddd; color: #666; padding: 10px; outline: none; }
 .maple-admin-toolbar { height: 30px; margin-bottom: 5px; padding: 0 5px; }
 .maple-admin-toolbar .maple-toolbar-right { float: right; }
 .maple-admin-toolbar .maple-toolbar-left { float: left; }
