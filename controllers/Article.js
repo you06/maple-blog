@@ -2,12 +2,15 @@
 const xtpl = require('xtpl');
 const fs = require('fs');
 const path = require('path');
-const marked = require('marked');
+const Prism = require('prismjs');
+var marked = require('marked');
+const hljs = require('highlight.js');
 const configs = require('../configs/configs.js');
 
 marked.setOptions({
-  highlight: function (code) {
-    return require('highlight.js').highlightAuto(code).value;
+  highlight: function (code, lan) {
+    return Prism.highlight(code, Prism.languages['lan'] || Prism.languages.javascript);
+    // return hljs.highlightAuto(code).value;
   }
 });
 

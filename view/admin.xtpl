@@ -35,8 +35,9 @@
     var modal = mapleModal('#maple-modal');
 
     marked.setOptions({
-      highlight: function (code) {
-        return hljs.highlightAuto(code).value;
+      highlight: function (code, lan) {
+        return Prism.highlight(code, Prism.languages['lan'] || Prism.languages.javascript);
+        <!--return hljs.highlightAuto(code).value;-->
       }
     });
 
