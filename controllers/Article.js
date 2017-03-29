@@ -9,6 +9,7 @@ const configs = require('../configs/configs.js');
 
 marked.setOptions({
   highlight: function (code, lan) {
+    if ('tree' === lan) return code
     return Prism.highlight(code, Prism.languages['lan'] || Prism.languages.javascript);
     // return hljs.highlightAuto(code).value;
   }
