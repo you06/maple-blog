@@ -78,8 +78,33 @@ h1, h2, h3, h4, h5, h6, p, span, li, td, dd, .maple-font {
 .maple-license-desc { display: inline-block; text-align: left; }
 .maple-license-desc a { color: #4271ae; }
 
-@media screen and (max-width: 700px) {
-  .maple-license-desc { display: block; text-align: center; }
+@media (max-width: 1000px) {
+  .maple-license { height: 60px; margin: 0 0 30px 0; }
+  .maple-license-desc { display: block; text-align: center; font-size: 25px; }
+  .maple-footer-bloc > p { font-size: 20px; }
+  h2 { font-size: 30px !important; }
+
+  .maple-header-small {
+    height: 10vh;
+  }
+  #maple-header-small-logo{
+    height: 10vh;
+  }
+  #maple-title {
+    font-size: 7vw;
+    margin: 65px 0;
+  }
+  .maple-info * {
+    font-size: 20px !important;
+    margin-right: 15px;
+  }
+  .maple-tags {
+    font-size: 20px;
+    padding: 0 10px;
+  }
+
+  .maple-title { font-size: 34px; }
+  .maple-preview { font-size: 24px; }
+
+  .maple-footer .maple-footer-bloc .maple-footer-logo { font-size: 40px; }
 }
-
-
